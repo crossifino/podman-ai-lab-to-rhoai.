@@ -7,13 +7,13 @@ Level: Beginner
 Time: 1 hour
 <br/>
 
-A common statement the we've been hearing from customers recently is "I want the ability to chat with my documents". Many customers are aware that Large Language Models (LLMs) provide them the ability to do that, but the implementation details are unknown as well as the possible risks. These unknowns make it difficult to understand where to start. 
+A common statement that we've been hearing from customers recently is "I want the ability to chat with my documents". Many customers are aware that Large Language Models (LLMs) provide them the ability to do that, but the implementation details are unknown as well as the possible risks. These unknowns make it difficult to understand where to start. 
 <br/><br/>
 Thankfully, there is a path forward with the newly released Podman AI Lab extension. Podman AI Lab allows you to pull down models and test them out locally to see how they perform and which one(s) will work best for your use case(s). The chatbot recipe within Podman AI Lab makes integrating LLMs with applications as easy as the click of a button.
 <br/><br/>
 Podman AI Lab is an excellent place to evaluate and test models, but you'll eventually want to see how this will actually be deployed in your enterprise. For that, we can use OpenShift and OpenShift AI along with the Elasticsearch vector database to create a Retrieval Augmented Generation (RAG) chatbot.
 <br/><br/>
-This article will walk you through how to go from a chatbot reciepe in the Podman AI Lab extension to a RAG chatbot deployed on OpenShift and OpenShift AI. 
+This article will walk you through how to go from a chatbot recipe in the Podman AI Lab extension to a RAG chatbot deployed on OpenShift and OpenShift AI. 
 <br/><br/>
 
 * <a href="#arch">Architecture</a>
@@ -52,7 +52,7 @@ The updated chatbot with LangChain is built as a container and deployed to OpenS
 </ol>
 
 ## <div id="req">Requirements</a>
-It is expected that you have admin access to an OpenShift 4.12+ cluster. The follwing code was tested with an OpenShift 4.15 cluster and OpenShift AI 2.9.
+It is expected that you have admin access to an OpenShift 4.12+ cluster. The following code was tested with an OpenShift 4.15 cluster and OpenShift AI 2.9.
 
 # <div id="podman_ai_lab">Podman AI Lab</a>
 ## Install Podman Desktop and Podman AI Lab extension
@@ -153,7 +153,7 @@ We'll now deploy the Elasticsearch operator. This will be our vector database.
 
 <pre>oc apply -k ./components/elasticsearch/base/</pre>
 </li>
-<li>Now we can create an Elasticsearch cluster instance. Make sure the Elasticsearch operatior pod is in a running state and ready.
+<li>Now we can create an Elasticsearch cluster instance. Make sure the Elasticsearch operator pod is in a running state and ready.
 <pre>watch oc get pods -n elastic-vectordb</pre>
 
 ![Elasticserach Operator Status](img/oc_elastic_operator_status.png)
@@ -416,10 +416,10 @@ Select <b>Single-model serving platform</b> for the runtime and select <b>REST</
 
 ![Add Serving runtime](img/rhoai_add_serving_runtime_custom.png)
 
-<b>NOTE:</b> <i>I've included a pre-built image that is public. You can build your own image with the Containerfile under ./components/ucstom-model-serving-runtime if you would rather pull from your own repository.</i>
+<b>NOTE:</b> <i>I've included a pre-built image that is public. You can build your own image with the Containerfile under ./components/custom-model-serving-runtime if you would rather pull from your own repository.</i>
 </li>
 <li>
-If the serving runtime was added was succesfully you should now see it in the list of serving runtimes available. 
+If the serving runtime was added successfully you should now see it in the list of serving runtimes available. 
 
 ![Serving runtime list](img/rhoai-llamacpp-runtime.png)
 
@@ -585,7 +585,7 @@ We'll first get some environment variables.
 
 </li>
 <li>
-Then we'll add in the Langchain code to give us our RAG functionality. Note the items highligted in red. Specifically where the model_service or your OpenShif AI inference endpoint URL and the Elasticsearch setup. Finally, take note of how both of these are passed to Langchain (chain).
+Then we'll add in the Langchain code to give us our RAG functionality. Note the items highligted in red. Specifically where the model_service or your OpenShift AI inference endpoint URL and the Elasticsearch setup. Finally, take note of how both of these are passed to Langchain (chain).
 
 ![Chatbot RAG](img/chat_app_rag.png)
 
