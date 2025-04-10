@@ -1,4 +1,4 @@
-llama-cpp-python==0.2.74
+llama-cpp-python
 starlette_context
 uvicorn
 fastapi
