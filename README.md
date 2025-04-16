@@ -52,7 +52,8 @@ The updated chatbot with LangChain is built as a container and deployed to OpenS
 </ol>
 
 ## <div id="req">Requirements</a>
-It is expected that you have admin access to an OpenShift 4.12+ cluster. The following code was tested with an OpenShift 4.15 cluster and OpenShift AI 2.9.
+
+It is expected that you have admin access to an OpenShift 4.12+ cluster. The follwing code was tested with an OpenShift 4.18 cluster and OpenShift AI 2.16.
 
 # <div id="podman_ai_lab">Podman AI Lab</a>
 ## Install Podman Desktop and Podman AI Lab extension
@@ -416,7 +417,8 @@ Select <b>Single-model serving platform</b> for the runtime and select <b>REST</
 
 ![Add Serving runtime](img/rhoai_add_serving_runtime_custom.png)
 
-<b>NOTE:</b> <i>I've included a pre-built image that is public. You can build your own image with the Containerfile under ./components/custom-model-serving-runtime if you would rather pull from your own repository.</i>
+<b>NOTE 1:</b> <i>I've included a pre-built image that is public. You can build your own image with the Containerfile under ./components/ucstom-model-serving-runtime if you would rather pull from your own repository.</i>
+<b>NOTE 2:</b> <i>If you intend to work with the Granite model using the GraniteForCausalLM architecture instead of the LlamaForCausalLM one, then use the quay.io/alexonoliveira/llamacpp_python:latest image, since this image is built with the latest version of the llama-cpp-python package, which supports the GraniteForCausalLM architecture.</i>
 </li>
 <li>
 If the serving runtime was added successfully you should now see it in the list of serving runtimes available. 
