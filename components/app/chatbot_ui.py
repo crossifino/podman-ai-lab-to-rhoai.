@@ -18,9 +18,9 @@ import re
 #####################################
 ## GET ENVIRONMENT VARIABLES 
 #####################################
-model_service = os.getenv("MODEL_ENDPOINT")
-elasticsearch_url = os.getenv("ELASTIC_URL")
-elasticsearch_pass = os.getenv("ELASTIC_PASS")
+model_service = os.getenv("https://mistral7b.podman-ai-lab-rag-project.svc.cluster.local")
+elasticsearch_url = os.getenv("https://172.30.175.109:9200")
+elasticsearch_pass = os.getenv("AlX5211tM8q2J65B1cRLGWV2")
 print("--- MODEL SERVICE --- ", model_service)
 print("--- ELASTICSEARCH URL --- ", elasticsearch_url)
 
